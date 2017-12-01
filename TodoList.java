@@ -21,6 +21,7 @@ public class TodoList
       query(stdin, "Is that okay?");
     }
     
+
     else
       System.out.println("That major is not supported by our code currently");
     
@@ -66,10 +67,23 @@ public class TodoList
   public static boolean addingClasses(String expression)
   {
     
-    String[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145","MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398"};
+    Classes[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145",
+                           "MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398", "ENGL 398"};
     return false;
     
   }//end addingClasses
   
   
 }
+
+public class Classes{
+  int credit;
+  String name;
+  
+  public void Classes(String name, int credit){
+    this.name = name;
+    this.credit = credit;
+  }
+  
+}
+    
