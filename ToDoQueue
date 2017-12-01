@@ -9,13 +9,14 @@ public class TodoList
   public static void main (String[] args)
   {
     System.out.println("This is our list of classes that need to be taken");
+    
     Scanner stdin = new Scanner(System.in);
     String expression;
     System.out.println("What major are you?");
     
     System.out.print("Your major: ");
     expression = stdin.nextLine( ).toUpperCase( );
-    if (rightMajor(expression ))
+    if (rightMajor(expression))
     {
       System.out.println("Wow a computer science major! We only support BS majors for software engineering track! ");
       query(stdin, "Is that okay?");
@@ -24,15 +25,14 @@ public class TodoList
     else
       System.out.println("That major is not supported by our code currently");
     
-    do
-    {
+    do{
      System.out.print("Name 1 computer science class you have taken: ");
      expression = stdin.nextLine( ).toUpperCase( );
      if (addingClasses(expression))
         System.out.println("Class added!");
      else
         System.out.println("That's not a computer science class!");
-    }
+    } 
     while (query(stdin, "Do you have another class?"));
     
     System.out.println("Thanks for letting us help!");
@@ -63,13 +63,26 @@ public class TodoList
       return false;
   }
   
-  public static boolean addingClasses(String expression)
-  {
+  private static Queue<String> creatingQueue(File fin) throws IOException {
+    FileInputStream fis = new FileInputStream(fin);
     Queue<String> queue = new LinkedList<String>;
-    
+
+    //Construct BufferedReader from InputStreamReader
+    BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+
+    String line = null;
+    while ((line = br.readLine()) != null) {
+      queue.add(line);
+    }
+
+    br.close();
+    return queue;
+  }
   
+  public static boolean addingClasses(String expression, Queue<String> queue)
+  {
+    queue.add(expression);
     return false;
-    
   }//end addingClasses
   
   
