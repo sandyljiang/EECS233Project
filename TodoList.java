@@ -18,7 +18,7 @@ public class TodoList
     if (rightMajor(expression ))
     {
       System.out.println("Wow a computer science major! We only support BS majors for software engineering track! ");
-    query(stdin, "Is that okay?");
+      query(stdin, "Is that okay?");
     }
     
     else
@@ -26,18 +26,17 @@ public class TodoList
     
     do
     {
-   System.out.print("Name 1 comp sci class you have taken: ");
-   expression = stdin.nextLine( ).toUpperCase( );
-   if (addingClasses(expression))
-   System.out.println("Class added!");
-   
-   else
-   System.out.println("That's not a comp sci class!");
+     System.out.print("Name 1 computer science class you have taken: ");
+     expression = stdin.nextLine( ).toUpperCase( );
+     if (addingClasses(expression))
+        System.out.println("Class added!");
+     else
+        System.out.println("That's not a computer science class!");
     }
     while (query(stdin, "Do you have another class?"));
     
-    System.out.println("Thanks letting us help!");
-  }
+    System.out.println("Thanks for letting us help!");
+  }//end main
   
   public static boolean query(Scanner input, String prompt)
   {
@@ -53,7 +52,8 @@ public class TodoList
     
     return answer.startsWith("Y");
     
-  }
+  }//end query
+  
   //write all your code here
   public static boolean rightMajor(String expression )
   {
@@ -69,7 +69,7 @@ public class TodoList
     String[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145","MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398"};
     return false;
     
-  }
+  }//end addingClasses
   
   
 }
