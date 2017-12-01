@@ -66,7 +66,11 @@ public class TodoList
   public static boolean addingClasses(String expression)
   {
     
-    String[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145","MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398"};
+    String[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145",
+                           "MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398", "ENGL 398",
+                           "MATH 380", "EECS 340", "EECS 345", "EECS 393", "EECS 293", "EECS 444", "EECS 275", "EECS 339", 
+                           "EECS 293", "EECS 290"};
+  
     return false;
     
   }//end addingClasses
