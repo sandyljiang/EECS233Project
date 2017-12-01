@@ -16,7 +16,10 @@ public class TodoList
     System.out.print("Your major: ");
     expression = stdin.nextLine( ).toUpperCase( );
     if (rightMajor(expression ))
-      System.out.println("Wow a computer science major! ");
+    {
+      System.out.println("Wow a computer science major! We only support BS majors for software engineering track! ");
+    query(stdin, "Is that okay?");
+    }
     
     else
       System.out.println("That major is not supported by our code currently");
@@ -62,6 +65,8 @@ public class TodoList
   
   public static boolean addingClasses(String expression)
   {
+    
+    String[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145","MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398"};
     return false;
     
   }
