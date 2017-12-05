@@ -91,14 +91,16 @@ public class TodoList
         {
           String[] n = new String[array.length - 1];
           System.arraycopy(array, 0, n, 0, i);
-          System.arraycopy(array, i+1, n, i, array.length - i-1);
-          allClasses = n;
+          System.arraycopy(array, i+1, n, i, array.length - i);
+          array = n;
         }
+        allClasses = array;
         return true;
       }
+      allClasses = array;
       return false;
     }
-    
+    allClasses = array;
     return false;
   }
   
