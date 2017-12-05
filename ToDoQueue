@@ -1,3 +1,5 @@
+package FinalProject;
+
 //Sandy Jiang (sxj409) and Samantha Frankum (srf48)
 
 import java.io.BufferedReader;
@@ -13,6 +15,7 @@ import java.util.Scanner;
 
 
 public class ToDoQueue
+
 {
 
   public static void main (String[] args) throws IOException
@@ -51,8 +54,12 @@ public class ToDoQueue
   }//end main
 
   public static boolean removingClasses(String expression, Queue<String> queue){
+      long start, end;
       if(queue.contains(expression)){
+          start = System.currentTimeMillis();
           queue.remove(expression);
+          end = System.currentTimeMillis();
+          System.out.println("It took " + (end-start) + " milliseconds to finish last task");
           return true;
       }
       return false;
