@@ -1,14 +1,25 @@
 //Sandy Jiang (sxj409) and Samantha Frankum (srf48)
 
-
-import java.util.Stack;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
+
+
 
 public class TodoList
 {
-  public static void main (String[] args)
+  
+  public static String[] allClasses = new String[100] ;
+  public static void main (String[] args) throws IOException
   {
+    File file = new File("/Users/Sandy/Desktop/EECS233.txt");
     System.out.println("This is our list of classes that need to be taken");
+    
     Scanner stdin = new Scanner(System.in);
     String expression;
     System.out.println("What major are you?");
@@ -24,21 +35,29 @@ public class TodoList
     else
       System.out.println("That major is not supported by our code currently");
     
+    allClasses = creatingArray(file);
     do
     {
-     System.out.print("Name 1 computer science class you have taken: ");
-     expression = stdin.nextLine( ).toUpperCase( );
-     if (addingClasses(expression))
-        System.out.println("Class added!");
-     else
-        System.out.println("That's not a computer science class!");
+      System.out.print("Name 1 comp sci class you have taken: ");
+      expression = stdin.nextLine( ).toUpperCase( );
+      if (removingClasses(expression, allClasses))
+      {
+        System.out.println("Class Removed!");
+        
+      }
+      
+      else
+        System.out.println("That's not a comp sci class!");
     }
     while (query(stdin, "Do you have another class?"));
     
-    System.out.println("Thanks for letting us help!");
-  }//end main
+    
+    System.out.println("Thanks for letting us help! Here is your class list!");
+    computeClassRecommendations(allClasses);
+  }
   
-  public static boolean query(Scanner input, String prompt)
+    
+    public static boolean query(Scanner input, String prompt)
   {
     String answer;
     
@@ -52,9 +71,8 @@ public class TodoList
     
     return answer.startsWith("Y");
     
-  }//end query
-  
-  //write all your code here
+  }
+
   public static boolean rightMajor(String expression )
   {
     if(expression.equalsIgnoreCase("computer science"))
@@ -63,17 +81,54 @@ public class TodoList
       return false;
   }
   
-  public static boolean addingClasses(String expression)
+  public static boolean removingClasses(String expression, String[] array)
   {
+    if(Arrays.asList(array).contains(expression))
+    {
+      for (int i = 0; i < array.length; i++)
+      {
+        if (array[i] == expression)
+        {
+          String[] n = new String[array.length - 1];
+          System.arraycopy(array, 0, n, 0, i);
+          System.arraycopy(array, i+1, n, i, array.length - i-1);
+          allClasses = n;
+        }
+        return true;
+      }
+      return false;
+    }
     
-    String[] allClasses = {"EECS 132", "EECS 233", "EECS 281", "EECS 302", "EECS 340", "EECS 395", "CHEM 111", "ENGR 145",
-                           "MATH 121", "MATH 122","MATH 223", "MATH 224","PHYS 121", "PHYS 122","ENGR 398", "ENGL 398",
-                           "MATH 380", "EECS 340", "EECS 345", "EECS 393", "EECS 293", "EECS 444", "EECS 275", "EECS 339", 
-                           "EECS 293", "EECS 290"};
-  
     return false;
+  }
+  
+  
+  private static String[] creatingArray(File fin) throws IOException 
+  {
+    int numberOfClasses = 0;
     
-  }//end addingClasses
+    FileInputStream fis = new FileInputStream(fin);
+    String[] array = new String[1000];
+    
+    //Construct BufferedReader from InputStreamReader
+    BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+    
+    String line = null;
+    while ((line = br.readLine()) != null) {
+      array[numberOfClasses] = line;
+      numberOfClasses++;
+    }
+    
+    br.close();
+    return array;
+    
+  }
   
   
+  public static void computeClassRecommendations(String[] all)
+  {
+      System.out.println(Arrays.toString(all));
+  }
+
+
 }
