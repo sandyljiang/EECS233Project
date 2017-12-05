@@ -14,12 +14,12 @@ import java.util.List;
 public class TodoList
 {
   
-  public static String[] allClasses = new String[100] ;
   public static void main (String[] args) throws IOException
   {
     File file = new File("/Users/Sandy/Desktop/EECS233.txt");
     System.out.println("This is our list of classes that need to be taken");
     
+    String[] allClasses = new String[100] ;
     Scanner stdin = new Scanner(System.in);
     String expression;
     System.out.println("What major are you?");
@@ -43,6 +43,7 @@ public class TodoList
       if (removingClasses(expression, allClasses))
       {
         System.out.println("Class Removed!");
+        removing(expression, allClasses);
         
       }
       
@@ -56,8 +57,8 @@ public class TodoList
     computeClassRecommendations(allClasses);
   }
   
-    
-    public static boolean query(Scanner input, String prompt)
+  
+  public static boolean query(Scanner input, String prompt)
   {
     String answer;
     
@@ -72,7 +73,7 @@ public class TodoList
     return answer.startsWith("Y");
     
   }
-
+  
   public static boolean rightMajor(String expression )
   {
     if(expression.equalsIgnoreCase("computer science"))
@@ -85,23 +86,31 @@ public class TodoList
   {
     if(Arrays.asList(array).contains(expression))
     {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  public static String[] removing(String expression, String[] array)
+  {
+    if(Arrays.asList(array).contains(expression))
+    {
       for (int i = 0; i < array.length; i++)
       {
         if (array[i] == expression)
         {
           String[] n = new String[array.length - 1];
           System.arraycopy(array, 0, n, 0, i);
-          System.arraycopy(array, i+1, n, i, array.length - i);
+          System.arraycopy(array, i+1, n, i, array.length - i -1);
           array = n;
         }
-        allClasses = array;
-        return true;
+        
+        return array;
       }
-      allClasses = array;
-      return false;
+      return array;
     }
-    allClasses = array;
-    return false;
+    return array;
   }
   
   
@@ -129,8 +138,8 @@ public class TodoList
   
   public static void computeClassRecommendations(String[] all)
   {
-      System.out.println(Arrays.toString(all));
+    System.out.println(Arrays.toString(all));
   }
-
-
+  
+  
 }
