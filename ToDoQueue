@@ -112,8 +112,10 @@ public class ToDoQueue
 
   }
   
-  public static void computeClassRecommendations(Queue<String> queue){
-      System.out.println(queue.toString());
+ public static void computeClassRecommendations(Queue<String> queue){
+      Queue<String> temp = queue;
+      while(temp.size() > 0 && temp.peek() != null)
+          System.out.print(temp.remove() + ", ");
   }
 
 }
