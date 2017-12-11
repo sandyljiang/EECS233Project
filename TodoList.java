@@ -84,6 +84,7 @@ public class TodoList
   {
 
     if(expression.equalsIgnoreCase("computer science"))
+
       return true;
     else
       return false;
@@ -146,13 +147,16 @@ public class TodoList
 
   public static void computeClassRecommendations(String[] all)
   {
-      int count = 0;
+    long start, end; 
+    start = System.currentTimeMillis();
+     int count = 0;
       while(all[count] != null)
       {
           System.out.print(all[count] + ", ");
           count++;
       }
-          
+      end = System.currentTimeMillis();
+      System.out.println("It took " + (end-start) + " milliseconds to compute classes");
   }
 
 }
