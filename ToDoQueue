@@ -70,7 +70,8 @@ public class ToDoQueue
   {
     String answer;
 
-    System.out.print(prompt + " [Y or N]: ");
+
+System.out.print(prompt + " [Y or N]: ");
     answer = input.nextLine( ).toUpperCase( );
 
     while (!answer.startsWith("Y") && !answer.startsWith("N"))
@@ -114,8 +115,12 @@ public class ToDoQueue
   
  public static void computeClassRecommendations(Queue<String> queue){
       Queue<String> temp = queue;
+      long start, end;
+      start = System.currentTimeMillis();
       while(temp.size() > 0 && temp.peek() != null)
           System.out.print(temp.remove() + ", ");
+      end = System.currentTimeMillis();
+      System.out.println("It took " + (end-start) + " milliseconds to finish last task");
   }
 
 }
