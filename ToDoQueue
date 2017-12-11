@@ -1,4 +1,4 @@
-package FinalProject;
+  package FinalProject;
 
 //Sandy Jiang (sxj409) and Samantha Frankum (srf48)
 
@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class ToDoQueue
 
 {
-
+  //handles the queries and the talking between the program and user
   public static void main (String[] args) throws IOException
   {
     File file = new File("C:\\Users\\samor\\Documents\\NetBeansProjects\\SecondEECS233\\src\\FinalProject\\ClassList.txt");
@@ -53,6 +53,7 @@ public class ToDoQueue
     computeClassRecommendations(queue);
   }//end main
 
+  //removes a specific string expression from the queue
   public static boolean removingClasses(String expression, Queue<String> queue){
       long start, end;
       if(queue.contains(expression)){
@@ -65,7 +66,7 @@ public class ToDoQueue
       return false;
   }
   
-  
+  //queries the user and only excepts y or n
   public static boolean query(Scanner input, String prompt)
   {
     String answer;
@@ -83,8 +84,7 @@ System.out.print(prompt + " [Y or N]: ");
     return answer.startsWith("Y");
   }//end query
 
-  //write all your code here
-
+  //confirms that major is computer science
   public static boolean rightMajor(String expression )
   {
     if(expression.equalsIgnoreCase("computer science"))
@@ -94,7 +94,7 @@ System.out.print(prompt + " [Y or N]: ");
 
   }
 
-  
+  //creates queue with list of classes from a file (file declared in main class)
   private static Queue<String> creatingQueue(File fin) throws IOException {
 
     FileInputStream fis = new FileInputStream(fin);
@@ -112,7 +112,8 @@ System.out.print(prompt + " [Y or N]: ");
     return queue;
 
   }
-  
+ 
+ //prints the class recommendations and how long it took to compute
  public static void computeClassRecommendations(Queue<String> queue){
       Queue<String> temp = queue;
       long start, end;
